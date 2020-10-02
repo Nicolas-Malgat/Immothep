@@ -70,7 +70,7 @@ class IntermovieDataLoader:
         Download the data from internet
         '''
         
-        print('Donwloading data')
+        print('Downloading data')
         with open(RAW_LOCAL_PATH, "wb") as f:
             response = requests.get(TXT_REMOTE_PATH, stream=True)
             total_length = response.headers.get('content-length')
@@ -85,7 +85,7 @@ class IntermovieDataLoader:
                     dl += len(data)
                     f.write(data)
                     done = int(50 * dl / total_length)
-                    sys.stdout.write("\r[%s%s]" % ('|' * done, ' ' * (50-done)) )    
+                    sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )    
                     sys.stdout.flush()
 
         print('Téléchargement terminé !')
