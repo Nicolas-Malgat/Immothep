@@ -15,7 +15,7 @@ CURATED_LOCAL_PATH = '../datas/CURATED/'
 
 TITLE_FILE_NAME = 'valeursfoncieres-2019.txt'
 
-class IntermovieDataLoader:
+class ImmothepDataLoader:
 
     def split_data(self):
         '''
