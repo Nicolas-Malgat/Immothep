@@ -12,15 +12,16 @@ class csvLoader:
 
         csvLoader.__check_location()
 
-        df.to_csv(name)
+        df.to_csv('{}{}'.format(csvLoader.LOCATION, name), encoding='utf-8')
 
     @staticmethod
     def load(name: str):
         if '.csv' not in name:
             name = name + '.csv'
 
-        pd.read_csv('{}{}'.format(csvLoader.LOCATION, name), encoding='utf-8')
-        print('Successfully created ', name)
+        df = pd.read_csv('{}{}'.format(csvLoader.LOCATION, name), encoding='utf-8')
+        print('Successfully loaded ', name)
+        return df 
 
     @staticmethod
     def __check_location():
