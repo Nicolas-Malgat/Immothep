@@ -6,13 +6,13 @@ class csvLoader:
     LOCATION = r'../datas/CURATED/'
 
     @staticmethod
-    def save(df: pd.DataFrame, name: str):
+    def save(df: pd.DataFrame, name: str, save_index=True):
         if '.csv' not in name:
             name = name + '.csv'
 
         csvLoader.__check_location()
 
-        df.to_csv('{}{}'.format(csvLoader.LOCATION, name), encoding='utf-8')
+        df.to_csv('{}{}'.format(csvLoader.LOCATION, name), encoding='utf-8', index=save_index)
 
     @staticmethod
     def load(name: str):
