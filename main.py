@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, exception_handlers
+from fastapi import FastAPI
 from fastapi.exception_handlers import (
     http_exception_handler,
     request_validation_exception_handler,
@@ -7,6 +7,9 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from starlette.exceptions import HTTPException as StarletteHTTPException
+
+from estimation import EstimationBien
+from modules.csvLoader import csvLoader
 
 app = FastAPI()
 
@@ -25,8 +28,30 @@ async def validation_exception_handler(request, exc):
 async def root():
     return JSONResponse(content=jsonable_encoder({"message": "Hello world !"}))
 
-@app.get("/maison")
-async def estimation_maison(metre_carre: int, nb_pieces: int, terrain: int, code_postal: int):    
-    raise HTTPException(404, detail="This api is not implemented yet :(")
+@app.get("/code_postal")
+async def root():
+    
+    df = csvLoader.load('prix_metre_maison').astype({"Code postal": int})
+    data = df['Code postal'].to_dict()
+    return JSONResponse(
+        content = data 
+    )
+
+@app.get("/estimate")
+async def estimation_maison(metre_carre: float, nb_pieces: int, terrain: float, code_postal: int):
+
+    prix_metre_carre: dict = EstimationBien.getPrixMetreParCodePostalCordialement(code_postal)
+    estimation: dict = EstimationBien.estimation(nb_pieces, metre_carre, prix_metre_carre)
+
+    return JSONResponse({
+            'request': {
+                'metre_carre': metre_carre,
+                'nb_pieces': nb_pieces,
+                'terrain': terrain,
+                'code_postal': code_postal
+            },
+            'response': estimation
+    })
+    # raise HTTPException(404, detail="This api is not implemented yet :(")
     # return intelligence_artificielle.estimation_maison(metre_carre, nb_pieces, terrain, code_postal)
     
