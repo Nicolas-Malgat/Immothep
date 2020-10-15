@@ -1,37 +1,79 @@
+
 # Immothep
 
-La société Immothep, nouveau fleuron de l'immobilier Français, souhaite créer un module d'estimation de biens basé sur l'intelligence artificielle pour enrichir sa plateforme et acquérir de nouveaux acheteurs/vendeurs.
+<!-- PROJECT LOGO -->
+<style>
+    .cat {
+    left: 50%;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+    }
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+</style>
 
-### Les contraintes
+<div class='cat'>
+	<img class="image" src="http://makeameme.org/media/templates/120/grumpy_cat.jpg" alt="" width="120" height="120">
+</div>
 
-Vous devrez fournir un seul **Jupyter Notebook** (vous pouvez cependant avoir plusieurs fichiers Python en support de votre fichier Jupyter .ipynb).
+<br />
+<p align="center">
+  <h3 align="center">Intermovie</h3>
 
-Le web service (ou API) devra être en python et répondre au contrat suivant :
+  <p align="center">
+    A study project, house price prediction
+  </p>
+  
+</p>
 
-**Url de la requête**
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-GET sur l'url http://localhost:5003/api/estimate (en local sur votre machine)
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Installation](#installation)
+* [Usage](#usage)
 
-**Paramètres de la requête**
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-- metre_carre : le nombre de m² habitables loi Carrez
-- nb_pieces : nombre de pièces principales
-- terrain : le nombre de m² du terrain
-- code_postal : le code postal où se trouve le bien
+### Built With
 
-**Retour de la requête**
+* [Anaconda](https://www.anaconda.com/)
 
-Le retour de la requête devra contenir au minimum l'estimation dans un format JSON
+<!-- GETTING STARTED -->
+## Getting Started
 
-```JSON
-{ "estimation": "130 000€" }
-```
+To get a local copy up and running follow these simple steps.
 
+### Installation
 
-L'API pourra utiliser n'importe quel Framework. Par défaut, vous pouvez utiliser  **[Fast Api](https://fastapi.tiangolo.com)**  dont la documentation est fournie.
+1. Clone the repo
 
+    ```sh
+    git clone https://github.com/diem-ai/Immothep.git
+    ```
 
----
-Pour choisir votre modèle d'apprentissage, un article (qui contient un cheat sheet) est aussi fourni. Il est  **recommandé d'utiliser le package Scikit Learn  **pour ce développement**.
+2. Create a conda virtual environment with
 
-### [Aide pour choisir le modèle](https://towardsdatascience.com/the-beginners-guide-to-selecting-machine-learning-predictive-models-in-python-f2eb594e4ddc)
+    ```sh
+    conda create --name <env> --file requirements.txt
+    ```
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+* Run the server with:
+
+    ```sh
+    uvicorn src.modules.main:app --reload --port 5003
+    ```
+
+* Run immothep.ipynb
