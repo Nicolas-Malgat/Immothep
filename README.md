@@ -31,7 +31,7 @@ git clone https://github.com/diem-ai/Immothep.git
 ```
 2. Create a conda virtual environment with
 ```bash
-conda create --name <env> --file requirements.txt
+conda create --name <env> --file package-list.txt
 ```
 ## Usage
 
