@@ -26,7 +26,12 @@ async def validation_exception_handler(request, exc):
 
 @app.get("/")
 async def root():
-    return JSONResponse(content=jsonable_encoder({"message": "Hello world !"}))
+    return JSONResponse(content=jsonable_encoder(
+        {
+            "estimate": "http://127.0.0.1:5003/estimate?metre_carre=30&nb_pieces=4&terrain=0&code_postal=1000",
+            "code_postal": "http://127.0.0.1:5003/code_postal"
+        }
+    ))
 
 @app.get("/code_postal")
 async def root():

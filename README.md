@@ -1,3 +1,4 @@
+
 <p  align="center">
 <h1  align="center">Immothep</h3>
 </p>
@@ -14,9 +15,10 @@
 
 *  [Usage](#usage)
 
+*  [Authors](#authors)
+
 ## About The Project
 
-### Introduction
 Immothep, the new flagship of French real estate, wants to create a property valuation module based on artificial intelligence to enrich its platform and acquire new buyers / sellers.
 
 ## Getting Started
@@ -47,3 +49,30 @@ or
 ```bash
 uvicorn src.modules.main:app --port 5003
 ```
+- Use the following URL to get an estimation such as:
+
+http://127.0.0.1:5003/estimate?metre_carre=30&nb_pieces=4&terrain=0&code_postal=1000
+```JSON
+{
+	"request":
+		{
+			"metre_carre":30.0,
+			"nb_pieces":4,
+			"terrain":0.0,
+			"code_postal":1000
+		},
+	"response":
+		{
+			"estimation_maison":99560.0362345221,
+			"estimation_appart":63630.20351964372
+		}
+}
+```
+> This application can't estimate on every "code_postal" unfortunatly.
+> A second url can be called in order to get every possible code_postal
+> http://127.0.0.1:5003/code_postal
+
+## Authors
+
+Nicolas Campion
+Nicolas Malgat
