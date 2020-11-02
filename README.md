@@ -38,7 +38,7 @@ conda create --name <env> --file package-list.txt
 ## Usage
 
 
-- Run [notebook_main.ipynb](https://github.com/KRDavid/Immothep/blob/main/NoteBookBordeaux.ipynb)
+- Run [notebook_main.ipynb](https://github.com/Nicolas-Malgat/Immothep/blob/master/notebook_main.ipynb)
 > This will generate essential files for server execution such as [modele_lineaire_maison.p](https://github.com/Nicolas-Malgat/Immothep/blob/master/modele_lineaire_maison.p), [modele_lineaire_appartement.p](https://github.com/Nicolas-Malgat/Immothep/blob/master/modele_lineaire_appartement.p), **maison_filtre.csv** and **appartement_filtre.csv**.
 
 - Run the server with:
